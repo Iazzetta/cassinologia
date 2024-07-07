@@ -1,0 +1,31 @@
+<div class="game">
+    <div>
+        <div>Saldo Player: R$ <span id="player-saldo">{{player.coins|round(2)}}</span></div>
+        <div>Ganhos Player: R$ {{player.ganhos|round(2)}}</div>
+        <div>Banco Total: R$ {{bank.saldo|round(2)}}</div>
+        <div>Banco para Premios: R$ {{bank.saldo_para_premio()|round(2)}}</div>
+    </div>
+
+    <div class="telinha">
+        <div class="slots">
+            {% for l in slots %}
+                <div class="linha">
+                    {% for slot in l %}
+                        {% if slot.fill %}
+                            <div class="item filled">{{slot.display}}</div>
+                        {% else %}
+                            <div class="item">{{slot.display}}</div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+        <div class="logs">
+            <ul>
+                {% for l in logs %}
+                    <li>{{ l|safe}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
